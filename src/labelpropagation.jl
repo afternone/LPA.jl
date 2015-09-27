@@ -50,7 +50,7 @@ end
 Perform label propagation alghrithm for each node in a random order
 up to `iterations` times
 """
-function label_propagation{V}(g::AbstractGraph{V}, iterations::Int=20)
+function label_propagation{V}(g::AbstractGraph{V}; iterations::Int=20)
   Label = [1:num_vertices(g)]
   for i=1:iterations
     order = shuffle(collect(vertices(g)))
@@ -62,7 +62,7 @@ function label_propagation{V}(g::AbstractGraph{V}, iterations::Int=20)
   Label
 end
 
-function label_propagation{V}(g::AbstractGraph{V}, ns::Vector{Float64}, λ::Real=1.0, iterations::Int=20)
+function label_propagation{V}(g::AbstractGraph{V}, ns::Vector{Float64}; λ::Real=1.0, iterations::Int=20)
   Label = [1:num_vertices(g)]
   for i=1:iterations
     order = shuffle(collect(vertices(g)))
