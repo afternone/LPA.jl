@@ -3,7 +3,7 @@ module LPA
 using StatsBase
 using Graphs
 
-export label_propagation, modularity, nmi, voi
+export label_propagation, modularity, nmi, voi, neighbor_strength
 
 include("labelpropagation.jl")
 include("modularity.jl")
