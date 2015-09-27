@@ -1,4 +1,3 @@
-# calculate the normalised mutual information measure
 function voi(ca::Vector{Int}, cb::Vector{Int})
     length(ca) == length(cb) || error("membership length must be equal")
     n_ca = maximum(ca)

@@ -1,4 +1,6 @@
-# calculate the normalized mutual information measure
+"""
+Calculate the normalized mutual information measure
+"""
 function nmi(ca::Vector{Int}, cb::Vector{Int})
     length(ca) == length(cb) || error("membership length must be equal")
     n_ca = maximum(ca)

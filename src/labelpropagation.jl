@@ -1,6 +1,6 @@
 """
-This function finds the most frequent
-labels of neighbors and randomly returns one of them
+This function finds the most frequent labels of neighbors
+and randomly returns one of them
 """
 function maxvote{T}(label_count::Dict{Int,T})
   max_count = maximum(values(label_count))
@@ -15,7 +15,7 @@ end
 
 """
 Applies the value of label for each neighbor
-and calls maxVote function
+and calls maxvote function
 """
 function applyvote!{V}(v::V, g::AbstractGraph{V}, Label::Vector{Int})
   v_neighbors = out_neighbors(v, g)
@@ -46,6 +46,10 @@ function applyvote!{V}(v::V, g::AbstractGraph{V}, Label::Vector{Int}, ns::Vector
   end
 end
 
+"""
+Perform label propagation alghrithm for each node in a random order
+up to `iterations` times
+"""
 function label_propagation{V}(g::AbstractGraph{V}, iterations::Int=20)
   Label = [1:num_vertices(g)]
   for i=1:iterations
