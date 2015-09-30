@@ -1,4 +1,6 @@
-function modularity{V}(graph::AbstractGraph{V}, membership::Vector{Int}, weights::Vector{Real})
+modularity{V}(graph::AbstractGraph{V}, membership::Vector{Int}) = modularity(graph, membership, Float64[])
+
+function modularity{V,T<:Real}(graph::AbstractGraph{V}, membership::Vector{Int}, weights::Vector{T})
 
     types = maximum(membership)
     no_of_edges = num_edges(graph)
@@ -50,5 +52,3 @@ function modularity{V}(graph::AbstractGraph{V}, membership::Vector{Int}, weights
     end
     modularity_value
 end
-
-modularity{V}(graph::AbstractGraph{V}, membership::Vector{Int}) = modularity(graph, membership, Float64[])
