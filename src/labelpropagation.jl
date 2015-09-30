@@ -28,7 +28,7 @@ function applyvote!{V}(v::V, g::AbstractGraph{V}, Label::Vector{Int})
   end
 end
 
-function applyvote!{V}(v::V, g::AbstractGraph{V}, Label::Vector{Int}, ns::Vector{Float64}, λ::Real=1.0)
+function applyvote!{V, T<:Real}(v::V, g::AbstractGraph{V}, Label::Vector{Int}, ns::Vector{T}, λ::Real=1.0)
   v_edges = out_edges(v, g)
   if length(v_edges)>0
     label_count = Dict{Int,Float64}()
@@ -62,7 +62,7 @@ function label_propagation{V}(g::AbstractGraph{V}; iterations::Int=20)
   Label
 end
 
-function label_propagation{V}(g::AbstractGraph{V}, ns::Vector{Float64}; λ::Real=1.0, iterations::Int=20)
+function label_propagation{V, T<:Real}(g::AbstractGraph{V}, ns::Vector{T}; λ::Real=1.0, iterations::Int=20)
   Label = [1:num_vertices(g)]
   for i=1:iterations
     order = shuffle(collect(vertices(g)))
